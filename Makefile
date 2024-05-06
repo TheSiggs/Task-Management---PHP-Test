@@ -11,3 +11,6 @@ test: install
 
 install:
 	$(RUN_PHP) composer install --quiet
+
+phpstan:
+	$(RUN_PHP) vendor/bin/phpstan

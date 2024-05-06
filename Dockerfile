@@ -12,6 +12,24 @@ RUN \
     apk --no-cache add shadow && \
     usermod -u 1000 www-data
 
+
+# Install autoconf, linux-headers, and other build dependencies
+RUN apk add --no-cache $PHPIZE_DEPS linux-headers \
+    && pecl install xdebug-3.3.1 \
+    && docker-php-ext-enable xdebug
+
+# Configure Xdebug (adjust according to your needs)
+RUN echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.client_port=9003" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.log=/tmp/xdebug.log" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+
+# Set the PHP_IDE_CONFIG environment variable to specify the server name
+ENV PHP_IDE_CONFIG="serverName=PHPSTORM"
+
+
 # Run as the unpriviledged www-data user
 USER www-data:www-data
 

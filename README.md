@@ -6,7 +6,7 @@ common functionality at Rave.
 Your objectives are:
 
 1. Get the tests passing
-2. Ensure that all of the code (and tests) meets a high standard (whatever that means to you)
+2. Ensure that all the code (and tests) meets a high standard (whatever that means to you)
 3. Note down any choices or assumptions you made and why you made them in this README. For example, "I'm assuming that Task names are unique, otherwise they might not make sense" when compared to each other.
 4. Note down what you would do if you had more time in this README
 5. Delete the `vendor` directory, then zip this directory and email it to us
@@ -29,6 +29,13 @@ You need to:
    [installing the Docker Engine](https://docs.docker.com/engine/install/).
 4. Check that Docker is working by running `docker run hello-world`.
 
+## Static Analysis
+I have included phpstan for static analysis to ensure code quality
+It can be used by running the following command `make phpstan`
+
+## XDEBUG
+I have included XDEBUG in the Dockerfile to make debugging more efficient
+
 ## Running the tests
 Run `make test` to run the PHPUnit tests in a Docker container.
 
@@ -38,8 +45,14 @@ it if you would like to just run PHP code to debug things.
 
 ## My notes
 ### Choices or assumptions I made and reasons why
-* E.g. I assumed that task names were unique
+* I assumed that task names were unique
+* Added phpstan for static analysis
+* Added more test cases for a more complete test suite
+* Added xdebug for easier debugging
 
 ### Things I would do if I had more time
-* E.g. I would have rewritten it to use Rust because it's super fast and 
-that's what Khan Academy did!
+* I would add check for duplicate task names
+* More test cases (I may have missed some)
+* Add validation to collection when initializing a project
+* Improved Dockerfile (It was a quick and dirty solution for XDEBUG)
+* Implemented a database solution for large datasets
