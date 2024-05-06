@@ -1,4 +1,4 @@
-# Rave Build PHP Coding Test
+# Rave Build PHP Coding Test (Completed Test)
 Welcome to the Rave Build PHP Coding Test! A lot of our product at Rave 
 involves managing projects, and the tasks required to complete those projects.
 This is reflected in this codebase, which is a few classes that represent some 
